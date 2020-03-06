@@ -4,18 +4,22 @@ import { StyleSheet, Text, SafeAreaView, FlatList } from "react-native";
 import ColorBox from "../components/ColorBox";
 
 const ColorPalette = props => {
-  const COLORS = props.route.params.colors;
+  const { colors, paletteName } = props.route.params;
   return (
     <SafeAreaView>
       <FlatList
         style={styles.container}
-        data={COLORS}
+        data={colors}
         keyExtractor={item => item.hexCode}
         renderItem={({ item }) => <ColorBox color={item.hexCode} text={item.colorName} />}
-        ListHeaderComponent={<Text style={styles.heading}>Solarized</Text>}
+        ListHeaderComponent={<Text style={styles.heading}>{paletteName}</Text>}
       />
     </SafeAreaView>
   );
+};
+
+ColorPalette.navigationOptions = {
+  headerTitle: "Colors"
 };
 
 const styles = StyleSheet.create({
@@ -23,11 +27,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 10,
     paddingBottom: 10
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    paddingLeft: 5
   },
   heading: {
     fontSize: 18,

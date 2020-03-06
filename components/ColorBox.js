@@ -20,7 +20,12 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 5,
     color: "white",
-    alignItems: "center"
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    elevation: 2
   },
   text: {
     textAlign: "center",
