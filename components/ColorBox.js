@@ -1,10 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const ColorBox = ({ color, text }) => {
+const ColorBox = props => {
+  const { color, text } = props;
+  const textStyle = {
+    color: parseInt(props.color.replace("#", ""), 16) > 0xffffff / 1.1 ? "black" : "white"
+  };
   return (
     <View style={styles.box}>
-      <Text style={{ backgroundColor: color, ...styles.text }}>
+      <Text style={{ backgroundColor: color, ...styles.text, ...textStyle }}>
         {text}: {color}
       </Text>
     </View>
